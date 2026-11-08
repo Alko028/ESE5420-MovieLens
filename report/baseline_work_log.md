@@ -5,8 +5,8 @@
 ## 本次完成、整体剩余、下一任务
 
 - **完成**：公共评价、frequency floor、训练集内部 5-fold CV 的 L2 Logistic Regression、2,000 次配对用户 bootstrap、提交 TXT/PNG，以及复现验证。
-- **整体剩余**：确认代码发布与 Canvas 提交；之后 kNN、early draft、限时 GNN、类型消融和冻结后的最终测试。
-- **下一任务**：核对提交文件及代码链接，提交 checkpoint；再进入 kNN 和 11 月 16 日初稿。
+- **整体剩余**：Canvas 提交；之后 kNN、early draft、限时 GNN、类型消融和冻结后的最终测试。
+- **下一任务**：用户核对提交文件，提交 checkpoint；再进入 kNN 和 11 月 16 日初稿。
 
 ## 1. 为什么更改调参方式
 
@@ -75,3 +75,5 @@ LR 相对 reference 的配对 ΔPrecision=0.07942，95% CI [0.06073, 0.09945]；
 用户授权仓库：https://github.com/Alko028/ESE5420-MovieLens 。只发布源代码、说明、合成测试及汇总结果。原始数据、用户级派生数组、预测、划分记录、模型和本地运行日志均不提交。复现者自行从 GroupLens 下载数据，按 README 条款使用并致谢。
 
 完整本地操作指南见 [reproduction_guide.md](reproduction_guide.md)。
+
+公开仓库已发布并通过匿名访问检查。发布后从全新 clone 执行完整流程，14 项测试通过，两个模型的指标、区间、阈值及 baseline.txt 均与正式结果完全一致。Canvas 尚未提交。

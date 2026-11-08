@@ -101,7 +101,7 @@ Lingkai will implement kNN, draft the paper, and time-box a shallow GNN before N
         '\n'.join(f"| {r['model']} | {score(r,'precision')} | {r['metrics']['recall']:.4f} | {score(r,'AP')} |" for r in results) +
         f"\n\nLR C={lr['selected_C']}; training-only 5-fold mean AP={lr['cv_mean_AP']:.4f}.\n\n"
         f"验证集配对 ΔPrecision（LR − frequency）={delta['precision']['estimate']:.4f}，95% CI [{delta['precision']['lower']:.4f}, {delta['precision']['upper']:.4f}]。这不是 GNN 主比较，也不是最终测试结论。\n\n"
-        '本次完成：两 baseline、CV 调参、用户 bootstrap、模板 TXT 和 PNG。整体剩余：仓库发布核验/Canvas 提交，以及 kNN、限时 GNN、消融和最终交付。下一任务：确认公开代码链接与提交文件，再推进 early draft。\n\n'
+        '本次完成：两 baseline、CV 调参、用户 bootstrap、模板 TXT 和 PNG。整体剩余：Canvas 提交，以及 kNN、限时 GNN、消融和最终交付。下一任务：核对提交文件并由用户上传，再推进 early draft。\n\n'
         '方法与复现细节见 [baseline_work_log.md](baseline_work_log.md)。\n', encoding='utf-8')
     print(json.dumps({'body_words':words,'submission':str(submission),'paired_differences':delta},indent=2))
 

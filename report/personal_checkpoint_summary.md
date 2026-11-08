@@ -37,7 +37,7 @@ Canvas 新要求必须 K-fold CV，所以 C 的选择从原计划的验证 AP �
 - 必交：[baseline.txt](checkpoint_submission/baseline.txt)，370 词，符合九栏目模板。
 - 可选、建议一起交：[baseline.png](checkpoint_submission/baseline.png)，展示 AP 和 precision 的误差区间。
 - 截止：**2026 年 11 月 9 日 23:59，美东时间**；每组只交一份。
-- Code 栏指向公开 GitHub 仓库；代码包不包含 MovieLens 原始或用户级衍生数据。
+- Code 栏指向已发布并验证匿名可读的 [GitHub 仓库](https://github.com/Alko028/ESE5420-MovieLens)；全新 clone 的完整复现已通过，代码包不包含 MovieLens 原始或用户级衍生数据。
 - 本地准备好和已上传 Canvas 是两回事，实际提交仍须确认。
 
 ## 整体还剩什么、下一项任务
