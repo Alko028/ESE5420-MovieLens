@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "split_name": "baseline_v1",
+  "test_seed": 20261106,
+  "development_seed": 42,
+  "neighbor_k": 20,
+  "similarity": "cosine_raw_history_zero_filled",
+  "neighbor_fallback": "user_history_statistics",
+  "positive_rating_min": 4
+}

@@ -1,0 +1,12 @@
+{
+  "minimum_validation_recall": 0.5,
+  "cv_folds": 5,
+  "cv_seed": 42,
+  "C_grid": [0.001, 0.01, 0.1, 1.0, 10.0, 100.0],
+  "solver": "lbfgs",
+  "max_iter": 3000,
+  "tol": 0.000001,
+  "bootstrap_replicates": 2000,
+  "bootstrap_seed": 20261108,
+  "confidence_level": 0.95
+}

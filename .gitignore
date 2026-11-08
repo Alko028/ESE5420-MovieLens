@@ -1,0 +1,20 @@
+__pycache__/
+*.pyc
+.venv/
+.env
+Lab3/
+5420 lecture/
+tmp/
+archive/
+output/
+data training/outputs/
+data training/splits/
+*.npz
+*.log
+AGENTS.md
+/*.pdf
+/*.txt
+/project_proposal.md
+report/project_progress.md
+report/baseline_checkpoint.md
+ml-100k.zip

@@ -1,0 +1,20 @@
+# High-rating prediction on MovieLens 100K
+## Group
+LLK; Lingkai
+## Changes since the proposal
+Reduced five development splits to one and prioritized baselines before GNN. Following the checkpoint instructions, C is now selected by training-only K-fold CV rather than validation AP; validation selects the operating threshold.
+## Data
+MovieLens 100K: 100,000 ratings, 943 users, 1,682 movies. Nine history features summarize user, movie, and neighborhood mean rating, high-rating rate, and count. Output: rating >=4 is positive; ratings 1-3 are negative; unrated pairs remain unknown. No demographic or timestamp predictors. Excluded target pairs for movies absent from history: 48 training, 21 validation, 26 test.
+## Split
+Random within each user: floor(10%) test, floor(10%) validation, floor(20%) training targets, remainder history. Test seed 20261106; development seed 42. Counts: 61,175 history; 19,585 eligible training; 9,575 eligible validation; 9,570 eligible test. Final test labels stay sealed. History alone supplies statistics and movie similarities. Five stratified, shuffled folds within training targets use seed 42 and fold-local scaling. Users may occur across folds because this is existing-user preference completion, not cold-start or future prediction.
+## Baseline
+L2 logistic regression; C grid [0.001, 0.01, 0.1, 1, 10, 100]. Mean CV AP selected C=0.1 (CV AP 0.8002). Refit on training targets only. The movie history high-rating rate is a nonpersonalized reference. Thresholds maximize validation precision subject to recall >=0.5; ties favor larger recall, then larger threshold.
+## Result
+On held-out validation ratings, logistic regression AP is 0.8067 (95% CI 0.7914-0.8203); precision is 0.8193 (95% CI 0.8040-0.8339); actual recall is 0.5016 at threshold 0.699734. Reference AP is 0.7338 (95% CI 0.7128-0.7538); precision is 0.7399 (95% CI 0.7185-0.7599), recall 0.5075.
+Intervals are percentile intervals from 2,000 paired user-bootstrap resamples of 943 users (seed 20261108), retaining all ratings per sampled user and fixing models/thresholds. Validation selected thresholds, so precision intervals are descriptive and omit selection/training uncertainty. AP does not depend on the selected threshold. No final test scores were computed.
+## Issues found
+No duplicate pairs or history-target overlap. Some movies lack history; zero-neighbor features fall back to user history. All CV fits converged. Random splits can use later ratings to predict earlier ones; conclusions concern held-out preference completion. Only one development split, so no split-spread claim.
+## Next steps
+Lingkai will implement kNN, draft the paper, and time-box a shallow GNN before November 16. If GNN training is unstable, proceed with logistic regression, kNN, and genre ablation.
+## Code
+https://github.com/Alko028/ESE5420-MovieLens
