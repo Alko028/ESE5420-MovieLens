@@ -84,3 +84,19 @@ python "data training/compare_knn.py"
 全新环境首次运行kNN时可直接 `python "data training/knn.py"`。它要求已有固定预处理输入；比较脚本还要求已有LR和frequency结果。不要覆盖正式划分，不从多个重复运行中挑分数。
 
 本次仅完成本地开发，未推送GitHub，未修改此前checkpoint提交TXT/PNG，也未提交Canvas。
+
+## 2026-11-14 更新 — 代码发布
+
+### 本次完成
+
+- 将 kNN 实现、五折 CV 配置、对齐比较与复现审计脚本、测试、依赖和聚合结果/工作记录推送至公开仓库 `https://github.com/Alko028/ESE5420-MovieLens`。
+- Git commit：`b57ff99`。推送前 17 项自动测试全部通过；推送后远端 `main` 指向该提交。
+- 本次公开内容不含 MovieLens 原始数据、用户级预测、划分/训练数组、用户编辑的 checkpoint TXT 或带作者姓名的论文源码。
+
+### 整体剩余
+
+GNN 时间盒决策/实验、genre ablation、最终协议冻结后的一次测试、最终论文与视频仍待完成；Canvas checkpoint 是否提交仍待确认。
+
+### 下一任务
+
+按 11 月 16 日节点评估浅层 GNN 是否能稳定训练；如保留，先固定架构和训练内 CV 网格，再按相同开发协议运行。最终测试继续封存。
