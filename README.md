@@ -1,6 +1,6 @@
 # ESE 5420 — MovieLens high-rating prediction
 
-Reproducible baseline checkpoint: predict whether an existing user gives a held-out movie 4–5 stars. The first course baseline is L2 logistic regression, with a nonpersonalized movie high-rating-rate reference. kNN and a shallow GNN are future work.
+Reproducible high-rating prediction: predict whether an existing user gives a held-out movie 4–5 stars. The course baseline is L2 logistic regression, with a nonpersonalized movie high-rating-rate reference. kNN was completed on November 14 and is included in this repository; a shallow GNN remains planned.
 
 ## Reproduce
 
@@ -42,6 +42,8 @@ Output directories are not overwritten. Run the sequence once per fresh clone. T
 | L2 logistic regression | 0.8193 [0.8040, 0.8339] | 0.5016 | 0.8067 [0.7914, 0.8203] |
 
 These are development results on held-out observed ratings, not final-test or full-catalog recommendation estimates. Only one split was run; no best-seed selection or split-spread claim.
+
+Local kNN extension: training-only 5-fold CV selected k=127 with distance weights (Euclidean distance, fold-local scaling). Validation precision=0.8230, recall=0.5065, AP=0.8046. The paired precision difference versus LR is +0.00370, with 95% CI [-0.00327, 0.01060]; no clear winner. See [kNN work log](report/knn_work_log.md) for configuration, all intervals, and reproduction commands. There are now 17 passing tests; final test labels remain sealed.
 
 The submission files are in `report/checkpoint_submission/`. Chinese [personal results summary](report/personal_checkpoint_summary.md) and [reproduction guide](report/reproduction_guide.md) explain the workflow. Method details: [baseline work log](report/baseline_work_log.md).
 

@@ -1,0 +1,8 @@
+{
+  "n_neighbors_grid": [5, 15, 31, 63, 127],
+  "weights_grid": ["uniform", "distance"],
+  "metric": "euclidean",
+  "algorithm": "brute",
+  "n_jobs": 1,
+  "thread_limit": 4
+}

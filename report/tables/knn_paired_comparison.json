@@ -1,0 +1,49 @@
+{
+  "paired_differences": {
+    "knn_minus_logistic_regression": {
+      "precision": {
+        "estimate": 0.0037030205690784523,
+        "lower": -0.003269877845667818,
+        "upper": 0.010604129250167222,
+        "valid_replicates": 2000
+      },
+      "recall": {
+        "estimate": 0.0049084387389087825,
+        "lower": -0.0036555042825814122,
+        "upper": 0.013924354980509968,
+        "valid_replicates": 2000
+      },
+      "AP": {
+        "estimate": -0.0020654563757923627,
+        "lower": -0.007136726738982605,
+        "upper": 0.0028220104374752433,
+        "valid_replicates": 2000
+      }
+    },
+    "knn_minus_movie_high_rating_rate": {
+      "precision": {
+        "estimate": 0.0831217419057414,
+        "lower": 0.06472908497785494,
+        "upper": 0.10304764252142652,
+        "valid_replicates": 2000
+      },
+      "recall": {
+        "estimate": -0.0009439305267132658,
+        "lower": -0.027788166533297826,
+        "upper": 0.02517515712029518,
+        "valid_replicates": 2000
+      },
+      "AP": {
+        "estimate": 0.07079896355633042,
+        "lower": 0.05559479107947087,
+        "upper": 0.08668104999690407,
+        "valid_replicates": 2000
+      }
+    }
+  },
+  "validation_rows_aligned": true,
+  "training_cv_assignments_identical": true,
+  "input_hashes_identical": true,
+  "test_accessed": false,
+  "bootstrap_replicates": 2000
+}
