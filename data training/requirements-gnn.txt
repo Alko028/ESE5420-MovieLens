@@ -1,0 +1,4 @@
+# Install base requirements first. For RTX 50-series CUDA wheels use the command
+# in report/gnn_work_log.md; keep torch optional for existing CPU LR/kNN users.
+-r requirements.txt
+torch==2.9.1

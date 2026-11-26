@@ -1,56 +1,70 @@
-# ESE 5420 — MovieLens high-rating prediction
+# ESE 5420 - MovieLens high-rating prediction
 
-Reproducible high-rating prediction: predict whether an existing user gives a held-out movie 4–5 stars. The course baseline is L2 logistic regression, with a nonpersonalized movie high-rating-rate reference. kNN was completed on November 14 and is included in this repository; a shallow GNN remains planned.
+Single-author project by Lingkai Lei. Predict whether an existing user's held-out MovieLens-100K rating is 4-5 rather than 1-3. This is preference completion on observed ratings, not future-behavior prediction or full-catalog recommendation.
 
-## Reproduce
+Implemented: L2 logistic regression, kNN, a shallow polynomial movie GNN, LR/kNN genre variants, three exploratory GNN capacity variants, and a movie-rate floor. Original GNN versus LR remains the primary comparison.
 
-Tested with Python 3.13.9. From a **fresh clone**:
+## Paper and reproduction
+
+- [Complete reproduction guide](report/reproduce_final_experiments.md): setup, official data, preprocessing, all training stages, CV, freezing, evaluation and figures/tables.
+- [Paper source](report/draft.tex) and [compiled draft](report/draft.pdf), NeurIPS 2026 style. The later final submission still needs its video URL.
+- [Canonical aggregate results](report/final_results/README.md), [full-precision metrics](report/final_results/paper_results.json) and [figures](report/final_results/figures/).
+
+I completed this project individually, with no teammates. Instructions enable reproduction but do not claim independent human replication. Older work logs and report/tables are historical development records. Only report/final_results supplies the current paper's results.
+
+## Quick start
+
+Tested: Windows, Python 3.13.9, pinned base requirements; GNN experiments used PyTorch 2.9.1/CUDA 12.8 and an RTX 5080.
 
 ```powershell
 git clone https://github.com/Alko028/ESE5420-MovieLens.git
 cd ESE5420-MovieLens
 python -m venv .venv
 .\.venv\Scripts\python.exe -m pip install -r "data training/requirements.txt"
+.\.venv\Scripts\python.exe -m pip install torch==2.9.1 --index-url https://download.pytorch.org/whl/cu128
 ```
 
-Download [MovieLens 100K from GroupLens](https://grouplens.org/datasets/movielens/100k/) yourself and extract it so that `Lab3/ml-100k/u.data`, `u.item`, `u.genre`, and `u.info` exist. Data are not included in this repository.
+Download official [MovieLens-100K](https://grouplens.org/datasets/movielens/100k/) separately. Put u.data, u.item, u.genre and u.info in Lab3/ml-100k/. Data are not distributed here.
 
 ```powershell
 .\.venv\Scripts\python.exe -m unittest discover -s "data training/tests" -v
 .\.venv\Scripts\python.exe "data training/prepare_data.py"
 .\.venv\Scripts\python.exe "data training/verify_data.py"
-.\.venv\Scripts\python.exe "data training/movie_high_rating_rate.py"
-.\.venv\Scripts\python.exe "data training/logistic_regression.py"
-.\.venv\Scripts\python.exe "data training/build_checkpoint.py"
 ```
 
-Output directories are not overwritten. Run the sequence once per fresh clone. To repeat a model using the existing fixed data, give its script a new `--output-dir`; do not change seeds to select a better run.
+These commands check code and prepare inputs without model training or test-performance evaluation. Follow the complete guide for all experiments. Use a fresh clone; do not delete evaluation markers to repeat test evaluation.
 
 ## Protocol
 
-- One random-within-user history/train/validation/test split. Test seed 20261106; development seed 42. Target ratings never enter history statistics or the graph.
-- Nine inputs: user mean/high-rating-rate/count, movie mean/high-rating-rate/count, neighborhood weighted mean/high-rating-rate/count. History-only raw-rating cosine, up to 20 positive neighbors; no-neighbor fallback uses user history.
-- Five stratified shuffled folds **inside training targets** (seed 42). Each fold fits its own scaler. Select C by mean CV AP from `[0.001, 0.01, 0.1, 1, 10, 100]`; selected C is 0.1.
-- Refit on training targets. Validation chooses a threshold maximizing precision subject to recall >= 0.5. The final test set remains sealed.
-- Percentile 95% intervals from 2,000 paired user-bootstrap draws (seed 20261108), with models and thresholds fixed. Intervals do not capture training or model/threshold selection uncertainty.
+- Same ratings, fixed within-user random split and eligible targets for every method. Test seed 20261106; development/fold seed 42. Eligible targets: 19,585 training, 9,575 validation, 9,570 test.
+- Nine baseline features and graph use observed history only. Genre variants add 57 columns. Unrated pairs are not negatives.
+- Same five training folds select hyperparameters by mean AP. LR/kNN scalers are fold-local. Held-out target labels never enter graph/features.
+- Validation maximizes precision subject to recall >= 0.5. Models/scalers/thresholds are frozen before the reported test evaluation. Each fitted model in the reported comparison is evaluated once under the same fixed protocol. Test scores do not select models, parameters, thresholds or training runs.
+- 95% paired-user percentile intervals: 2,000 draws, seed 20261108. Conditional on fitted models/thresholds; no training/split/selection uncertainty. Exploratory comparisons are unadjusted for multiplicity.
+- The same test data had an earlier evaluation followed by fixed-protocol retraining/re-evaluation. This is documented provenance, not another independent test; no test-based tuning or best-of-runs selection was used.
 
-## Validation results
+## Current test results
 
-| Method | Precision (95% CI) | Recall | AP (95% CI) |
+Precision/recall are percentages. The complete intervals and 11 paired differences are in the aggregate JSON/CSV files.
+
+| Method | Precision (%) [95% CI] | Recall (%) | AP |
 |---|---|---|---|
-| Movie high-rating rate | 0.7399 [0.7185, 0.7599] | 0.5075 | 0.7338 [0.7128, 0.7538] |
-| L2 logistic regression | 0.8193 [0.8040, 0.8339] | 0.5016 | 0.8067 [0.7914, 0.8203] |
+| Movie-rate floor | 73.67 [71.78, 75.61] | 51.08 | 0.7261 |
+| LR | 80.92 [79.53, 82.37] | 50.75 | 0.8027 |
+| kNN (511) | 81.35 [79.92, 82.81] | 50.70 | 0.8011 |
+| Original GNN | 77.04 [75.56, 78.64] | 49.23 | 0.7690 |
+| LR + genre | 80.93 [79.58, 82.43] | 50.60 | 0.8039 |
+| kNN + genre (127) | 78.73 [77.28, 80.19] | 50.85 | 0.7771 |
+| GNN wide64 | 77.32 [75.85, 78.85] | 49.11 | 0.7697 |
+| GNN wide128 | 77.09 [75.63, 78.62] | 48.90 | 0.7702 |
+| GNN deep2x32 | 78.22 [76.79, 79.68] | 50.90 | 0.7791 |
 
-These are development results on held-out observed ratings, not final-test or full-catalog recommendation estimates. Only one split was run; no best-seed selection or split-spread claim.
+Original GNN minus LR precision is -3.88 percentage points, 95% CI [-5.06,-2.59]. kNN versus LR is inconclusive. Genre features do not clearly help LR and reduce this kNN's precision. Capacity variants remain below LR.
 
-Local kNN extension: training-only 5-fold CV selected k=127 with distance weights (Euclidean distance, fold-local scaling). Validation precision=0.8230, recall=0.5065, AP=0.8046. The paired precision difference versus LR is +0.00370, with 95% CI [-0.00327, 0.01060]; no clear winner. See [kNN work log](report/knn_work_log.md) for configuration, all intervals, and reproduction commands. There are now 17 passing tests; final test labels remain sealed.
+## Data terms and AI assistance
 
-The submission files are in `report/checkpoint_submission/`. Chinese [personal results summary](report/personal_checkpoint_summary.md) and [reproduction guide](report/reproduction_guide.md) explain the workflow. Method details: [baseline work log](report/baseline_work_log.md).
+F. Maxwell Harper and Joseph A. Konstan. 2015. The MovieLens Datasets: History and Context. ACM TIIS 5(4), Article 19. https://doi.org/10.1145/2827872
 
-## Data attribution and publication boundaries
+Follow the [MovieLens-100K README terms](https://files.grouplens.org/datasets/movielens/ml-100k-README.txt). No GroupLens/University of Minnesota endorsement is implied. Code, documentation, manuscript and aggregates only: no raw ratings, demographics, split memberships, user-level predictions, fitted models or derived user-level arrays.
 
-F. Maxwell Harper and Joseph A. Konstan. 2015. *The MovieLens Datasets: History and Context*. ACM Transactions on Interactive Intelligent Systems 5(4), Article 19. https://doi.org/10.1145/2827872
-
-Follow the [MovieLens 100K README terms](https://files.grouplens.org/datasets/movielens/ml-100k-README.txt). No endorsement by GroupLens or the University of Minnesota is implied. This repository contains code and aggregate results only: no raw ratings, demographics, per-user predictions, split memberships, or derived user-level arrays. Run scripts locally to reproduce those private artifacts.
-
-AI assistance: OpenAI Codex assisted with implementation, debugging, experiment execution, and documentation. The author is responsible for reviewing and verifying the methods and results.
+Lingkai Lei is responsible for ideas, final experimental design, interpretation and main manuscript. OpenAI Codex generated/implemented code under the author's direction and assisted with debugging, experiment execution/checks, figures, literature lookup and manuscript drafting/editing. The author retains responsibility for verification and submission.

@@ -1,0 +1,11 @@
+{
+  "taps_grid": [3, 5],
+  "epoch_grid": [20, 40],
+  "hidden_channels": 32,
+  "learning_rate": 0.005,
+  "weight_decay": 0.0001,
+  "batch_size": 256,
+  "gradient_clip_norm": 10.0,
+  "training_seed": 20261125,
+  "thread_limit": 4
+}

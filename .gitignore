@@ -8,6 +8,7 @@ tmp/
 archive/
 output/
 data training/outputs/
+data training/protocols/
 data training/splits/
 *.npz
 *.log
@@ -18,3 +19,12 @@ AGENTS.md
 report/project_progress.md
 report/baseline_checkpoint.md
 ml-100k.zip
+
+# Local models and personal export packages
+*.pt
+*.pth
+*.pkl
+*.joblib
+report/reproduced_final_results/
+report/overleaf_analysis_complete/
+report/overleaf_*.zip

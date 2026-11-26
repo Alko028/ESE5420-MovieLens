@@ -1,0 +1,24 @@
+\begin{table*}[t]
+\centering
+\caption{Prespecified paired precision differences on the reproduced test. Units are percentage points. Intervals are unadjusted for multiplicity; only original GNN minus LR is primary.}
+\label{tab:paired}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{llrr}
+\toprule
+Comparison & Role & $\Delta$Precision & 95\% CI \\
+\midrule
+Original GNN $-$ LR & primary & -3.88 & [-5.06, -2.59] \\
+kNN (511) $-$ LR & secondary & +0.43 & [-0.12, +1.01] \\
+LR + genre $-$ LR & genre & +0.00 & [-0.51, +0.53] \\
+kNN + genre (127) $-$ kNN (511) & genre & -2.62 & [-3.60, -1.67] \\
+Movie-rate floor $-$ LR & reference & -7.25 & [-9.06, -5.52] \\
+GNN wide64 $-$ Original GNN & exploratory & +0.28 & [+0.01, +0.56] \\
+GNN wide64 $-$ LR & exploratory & -3.60 & [-4.79, -2.38] \\
+GNN wide128 $-$ Original GNN & exploratory & +0.04 & [-0.26, +0.36] \\
+GNN wide128 $-$ LR & exploratory & -3.84 & [-5.06, -2.59] \\
+GNN deep2x32 $-$ Original GNN & exploratory & +1.18 & [+0.43, +1.90] \\
+GNN deep2x32 $-$ LR & exploratory & -2.70 & [-3.85, -1.52] \\
+\bottomrule
+\end{tabular}%
+}
+\end{table*}

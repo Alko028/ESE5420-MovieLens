@@ -1,0 +1,14 @@
+{
+  "epoch_grid": [20, 40],
+  "learning_rate": 0.005,
+  "weight_decay": 0.0001,
+  "batch_size": 256,
+  "gradient_clip_norm": 10.0,
+  "training_seed": 20261125,
+  "thread_limit": 4,
+  "variants": [
+    {"name": "wide64", "depth": 1, "hidden_channels": 64, "taps": 5, "parameter_count": 769, "max_hops": 4},
+    {"name": "wide128", "depth": 1, "hidden_channels": 128, "taps": 5, "parameter_count": 1537, "max_hops": 4},
+    {"name": "deep2x32", "depth": 2, "hidden_channels": 32, "taps": 3, "parameter_count": 3361, "max_hops": 4}
+  ]
+}

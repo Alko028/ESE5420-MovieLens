@@ -1,0 +1,4 @@
+{
+  "additional_neighbors": [255, 511, 1023],
+  "stop_rule": "One bounded expansion only; retain the recorded maximum even if selected. No validation/test-driven additions."
+}

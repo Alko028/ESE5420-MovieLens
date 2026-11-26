@@ -1,0 +1,9 @@
+% Copy final_results into your Overleaf project; requires booktabs and graphicx.
+\input{final_results/tables/test_results_main.tex}
+\input{final_results/tables/paired_differences.tex}
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{final_results/figures/precision_difference_vs_lr.pdf}
+\caption{Test precision differences versus LR at frozen validation thresholds. Error bars: paired-user 95\% percentile bootstrap intervals; original GNN is the primary comparison (red).}
+\label{fig:primary}
+\end{figure}

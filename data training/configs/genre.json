@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "genre_fields": 19,
+  "base_features": 9,
+  "feature_order": ["base_history", "movie_genre", "user_genre_high_rating_rate", "target_genre_x_user_preference"],
+  "user_preference": "history_high_count_per_genre/history_observed_count_per_genre",
+  "empty_genre_fallback": "user_overall_history_high_rating_rate",
+  "multi_genre_rule": "one history rating counts once in each indicated genre",
+  "positive_rating_min": 4,
+  "standardization": "fit independently inside each training fold; refit on all training targets after CV",
+  "hyperparameter_grid": "unchanged from the corresponding ratings-only baseline"
+}

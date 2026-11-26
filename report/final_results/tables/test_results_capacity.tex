@@ -1,0 +1,18 @@
+\begin{table*}[t]
+\centering
+\caption{Fixed-threshold MovieLens-100K test results (9,570 ratings, 943 users). Thresholds were selected on validation for recall at least 50\% and never adjusted on test. Intervals are 95\% paired-user percentile bootstrap intervals (2,000 resamples), conditional on fitted models and thresholds. This complete fixed-protocol rerun reproduces an already observed test set, rather than adding independent test evidence.}
+\label{tab:test_capacity}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lccc}
+\toprule
+Method & Precision (\%) [95\% CI] & Recall (\%) [95\% CI] & AP [95\% CI] \\
+\midrule
+LR & 80.92 [79.53, 82.37] & 50.75 [48.04, 53.37] & 0.8027 [0.7886, 0.8171] \\
+Original GNN & 77.04 [75.56, 78.64] & 49.23 [46.27, 52.00] & 0.7690 [0.7531, 0.7848] \\
+GNN wide64 & 77.32 [75.85, 78.85] & 49.11 [46.19, 51.87] & 0.7697 [0.7539, 0.7855] \\
+GNN wide128 & 77.09 [75.63, 78.62] & 48.90 [45.98, 51.63] & 0.7702 [0.7543, 0.7860] \\
+GNN deep2x32 & 78.22 [76.79, 79.68] & 50.90 [48.19, 53.48] & 0.7791 [0.7631, 0.7949] \\
+\bottomrule
+\end{tabular}%
+}
+\end{table*}

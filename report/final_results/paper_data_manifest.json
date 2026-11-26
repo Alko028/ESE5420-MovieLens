@@ -1,0 +1,38 @@
+{
+  "paper_data_source": "Complete fresh fixed-protocol run 2026-11-25, all nine methods from this run only",
+  "test_previously_observed": true,
+  "new_independent_test": false,
+  "protocol_sha256": "75eb609869804e98d9fcdd9b4d291b15f2718a78dd58c3e0b535b5894baa7aa5",
+  "saved_results_sha256": "71de4661467a2a10b4ca270f9664830988eacffb20d2f6d6fc82e4597d809ec9",
+  "files_sha256": {
+    "audit.json": "1f3108b0fc50996bb3bb3143754739e2ac1f3a78f8d5c00d81d0c292591ecb00",
+    "captions.md": "1421f0881e50803d56a5f831ba1084baab0545c68d70f00046efc79aab8bb09a",
+    "figure_table_preview.pdf": "97086a3075519095113dba47eaf9fdd3b259b5ec4bfb4b60ff67bc5cae4b760e",
+    "figures/genre_effects.pdf": "65d57b554d9ae6d0d55edc2d8e7103496e66252e73185d4ec4aca2b76a444f90",
+    "figures/genre_effects.png": "0c5054ca01dfc82486fff7a5314364dee6a00eec380bf8a4c9cd23b5d4d0f807",
+    "figures/gnn_capacity_effects.pdf": "efa01220dc87355dfa7d2f306a5193358161d26c31e45a4ec2580e52fdda7aaa",
+    "figures/gnn_capacity_effects.png": "54582affdaeab52669b969cac29acdcc538166e7b3cd736c35ef844f9ab52e59",
+    "figures/pr_gnn_capacity.pdf": "b24896d2345c0af8ba5d7153fe958099326a80d2eea0a505533574ed53a6c5c7",
+    "figures/pr_gnn_capacity.png": "4da85ff56049254f4129f71651e981cf37380dcdb2e6629b8659f093b51aefee",
+    "figures/pr_main_models.pdf": "f573d3f5c16758600d5eb09b92004fcc9c8f45ac56dae9394c4547f2266aa498",
+    "figures/pr_main_models.png": "b503c51ad7d0b068e0fc1225e6585603a8e7faaa2e461d161916090d42e22a74",
+    "figures/precision_difference_vs_lr.pdf": "a0ad355f79b8e2b4c0bd8c430cfe8883da73b0447a64b68b7684053fd40f8b30",
+    "figures/precision_difference_vs_lr.png": "b26daae869b6d1011d50d99803df848af6ea2832a3026c1941d146e8fc3d510f",
+    "latex_compile_check.json": "f336c7cab39db69a0730083832d65d3610bab87bd4e60de5978f54ac5fb954a9",
+    "latex_usage.tex": "e212387e352cc4d3a78ea6df81406329b8a8629b5cf6bd4276a7f1d7073a51cb",
+    "paper_results.json": "2bf913106154b88fcecac8107bf191996986ff6fc4d36e5c3ece4ea23051b6f7",
+    "README.md": "1ecf810c3e09daaa47d5d51a0dfb032fff9dc8adeaf5fcbd6017552eb271e15f",
+    "tables/paired_differences.csv": "df9233ade9f58196cd279c2debd8b5258f9dcb3b14fa3514dfb2768a22f77d9f",
+    "tables/paired_differences.tex": "51b50608babab5139f6f35675c7090bf1f1ef36f426a10bf36e1e26bf1bcdd36",
+    "tables/test_results_all.csv": "3d013f955449f8de75369f5ed3b6e3677100c4a572982aca7b96201c95a1dbad",
+    "tables/test_results_all.tex": "e064759b68316cb641c4b2ac8471a492f006153a38463e1cb6502940a40a0189",
+    "tables/test_results_capacity.tex": "33936b7902dd7e4d46dcb7316e12039e121de39c8ebb4bbbdddce2fe0333b8ed",
+    "tables/test_results_main.tex": "a616eb85a00201d1efbe290397822e4475b17cb083c5ae9ecb3917b01a2ee974"
+  },
+  "visual_check": {
+    "five_png_figures": "PASS",
+    "four_latex_tables_rendered": "PASS",
+    "latex_compile_warnings": []
+  },
+  "no_individual_level_predictions_in_report_folder": true
+}

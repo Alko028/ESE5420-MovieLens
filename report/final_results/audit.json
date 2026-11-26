@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "point_metrics_sklearn": true,
+  "all_model_and_paired_interval_quantiles": true,
+  "independent_bootstrap_replicates_per_model": 20,
+  "raw_data_opened": false,
+  "inference_or_training_run": false,
+  "test_previously_observed": true
+}
