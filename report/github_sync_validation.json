@@ -1,0 +1,39 @@
+{
+  "status": "PASS",
+  "date": "2026-11-26",
+  "published_code_commit": "5fea03117dc13878c52ac8ff36f44eb1b16214e5",
+  "public_repository": "https://github.com/Alko028/ESE5420-MovieLens",
+  "github_api_remote_tree_checked": true,
+  "public_tree_files_at_code_commit": 99,
+  "required_model_manuscript_guide_and_result_paths_present": true,
+  "private_artifact_path_check": "PASS",
+  "local_tests": 99,
+  "clean_source_clone_tests": 99,
+  "clean_clone_preprocessing_and_verification": "PASS",
+  "clean_clone_runtime": "existing pinned project environment; not a new dependency installation",
+  "training_shape": [
+    19585,
+    9
+  ],
+  "validation_shape": [
+    9575,
+    9
+  ],
+  "frozen_training_source_hashes_unchanged": true,
+  "paper_results_sha256": "2bf913106154b88fcecac8107bf191996986ff6fc4d36e5c3ece4ea23051b6f7",
+  "source_sha256": "18991266f92edaa605d08e92e3bbcfca543fc9ae0e9e51b8a3faccbb42f7064c",
+  "pdf_sha256": "37f079bf51b660e693a9c3224d5feb0f3bd1f1165fed202bf978e60ead0c07ef",
+  "main_text_pages": 5,
+  "reference_pages": 1,
+  "appendix_pages": 2,
+  "latex_warnings": [],
+  "changed_pages_visually_checked": [
+    3,
+    4,
+    5
+  ],
+  "original_models_retrained": false,
+  "original_test_re_evaluated": false,
+  "canvas_submitted": false,
+  "overleaf_modified": false
+}
